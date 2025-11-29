@@ -8,7 +8,7 @@ import os
 import base64
 from pathlib import Path
 from datetime import datetime
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 
 # Import modules
 from modules.master_report import generate_master_report
