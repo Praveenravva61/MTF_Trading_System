@@ -1,0 +1,66 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.so
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Cache folders
+.cache/
+.ipynb_checkpoints/
+__pycache__/
+
+# Logs
+*.log
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# -------------------------
+# Streamlit
+# -------------------------
+.streamlit/secrets.toml
+.streamlit/*.json
+
+# -------------------------
+# Data Files
+# -------------------------
+data/
+datasets/
+*.csv
+*.json
+*.xlsx
+*.parquet
+
+# Large files
+*.zip
+*.gz
+
+# -------------------------
+# Environment / Config
+# -------------------------
+.env
+*.env
+config.json
+
+# -------------------------
+# OS Files
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# IDE Files
+# -------------------------
+.vscode/
+.idea/
