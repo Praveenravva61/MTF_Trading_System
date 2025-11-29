@@ -1,0 +1,21 @@
+# Core dependencies
+streamlit
+pandas
+numpy
+
+# Data fetching
+yfinance
+
+# Visualization
+plotly
+
+# Machine Learning
+scikit-learn
+
+# Google AI SDK (for news analysis)
+google-generativeai
+google-adk
+
+# Additional utilities
+python-dateutil
+pytz
