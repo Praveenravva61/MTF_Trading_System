@@ -7,6 +7,8 @@ A comprehensive Multi-Timeframe Trading Analysis platform built with Streamlit, 
 # App visuals:
 
 <img width="1900" height="856" alt="image" src="https://github.com/user-attachments/assets/260b760c-4dc2-431e-8867-b20cd604565f" />
+<img width="1583" height="846" alt="image" src="https://github.com/user-attachments/assets/e21814c7-b523-43f2-9887-c32312b9e738" />
+<img width="1564" height="831" alt="image" src="https://github.com/user-attachments/assets/328e2282-a67c-432f-badf-982dab400a98" />
 <img width="1875" height="884" alt="image" src="https://github.com/user-attachments/assets/bb8cf5e0-4f87-4e74-a33f-0d747c3dc3f3" />
 <img width="1918" height="917" alt="image" src="https://github.com/user-attachments/assets/c19d60a4-b047-4071-aac6-0c9b6f4087ff" />
 <img width="1875" height="884" alt="image" src="https://github.com/user-attachments/assets/f2408cd6-e0dd-4a18-b79c-9400512bbbc3" />
