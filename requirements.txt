@@ -11,9 +11,12 @@ plotly
 
 # Machine Learning
 scikit-learn
+<<<<<<< HEAD
 xgboost
 tensorflow
 shap
+=======
+>>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
 
 # Google AI SDK (for news analysis)
 google-generativeai

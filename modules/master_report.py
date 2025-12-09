@@ -23,7 +23,11 @@ async def generate_master_report(symbol: str) -> Dict:
     with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
         try:
             # 1. DATA FETCHING
+<<<<<<< HEAD
             df_daily = fetch_yahoo_finance_history(symbol, period='3y')
+=======
+            df_daily = fetch_yahoo_finance_history(symbol, period='1y')
+>>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
             if df_daily.empty:
                 return {"error": f"No daily data for {symbol}"}
             

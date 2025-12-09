@@ -2,7 +2,10 @@
 
 import streamlit as st
 import pandas as pd
+<<<<<<< HEAD
 import numpy as np
+=======
+>>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
 import asyncio
 import random
 import os
@@ -14,7 +17,10 @@ import matplotlib.pyplot as plt
 # Import modules
 from modules.master_report import generate_master_report
 from modules.data_fetcher import get_stock_info
+<<<<<<< HEAD
 from modules.forecasting import ForecastingAgent
+=======
+>>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
 from utils.visualizations import (
     create_candlestick_chart,
     create_indicator_chart,
@@ -618,6 +624,7 @@ else:
             st.markdown("---")
 
             # ====================================================
+<<<<<<< HEAD
             # 1.5) AI FORECASTING AGENT
             # ====================================================
             st.markdown("## 🔮 AI Forecasting Agent (30-Day Prediction)")
@@ -629,6 +636,14 @@ else:
                     with st.spinner("🤖 Training models & generating forecast..."):
                         try:
                             agent = ForecastingAgent(ticker)
+=======
+            # 2) CHARTS — DAILY + INTRADAY
+            # ====================================================
+            st.markdown("## 📊 Price Structure — Daily & Intraday")
+
+            charts_left, charts_right = st.columns([2.0, 1.8])
+
+>>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
             with charts_left:
                 daily_fig = create_candlestick_chart(
                     df_daily.tail(100), f"{ticker} — Daily Candlestick", True, sr

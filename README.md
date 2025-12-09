@@ -2,6 +2,29 @@
 
 A comprehensive Multi-Timeframe Trading Analysis platform built with Streamlit, providing real-time technical analysis, news sentiment, fundamental metrics, and swing trade setups for Indian stocks.
 
+<<<<<<< HEAD
+=======
+# App visuals:
+
+<img width="1900" height="856" alt="image" src="https://github.com/user-attachments/assets/260b760c-4dc2-431e-8867-b20cd604565f" />
+<img width="1875" height="884" alt="image" src="https://github.com/user-attachments/assets/bb8cf5e0-4f87-4e74-a33f-0d747c3dc3f3" />
+<img width="1918" height="917" alt="image" src="https://github.com/user-attachments/assets/c19d60a4-b047-4071-aac6-0c9b6f4087ff" />
+<img width="1875" height="884" alt="image" src="https://github.com/user-attachments/assets/f2408cd6-e0dd-4a18-b79c-9400512bbbc3" />
+<img width="1889" height="904" alt="image" src="https://github.com/user-attachments/assets/499b82ab-8dd8-47de-bc12-bd6fe73bf38a" />
+<img width="1535" height="770" alt="image" src="https://github.com/user-attachments/assets/2a7c5615-1b0e-4bc6-b249-c690a14de5fc" />
+<img width="1535" height="840" alt="image" src="https://github.com/user-attachments/assets/b04430e6-6c5e-4b66-8621-5524c54447b6" />
+<img width="1853" height="853" alt="image" src="https://github.com/user-attachments/assets/385609c3-c585-44a6-a23b-30eafb83bb81" />
+<img width="1920" height="867" alt="image" src="https://github.com/user-attachments/assets/47901a7b-a297-461a-9997-ee27aef4f671" />
+
+
+
+
+
+
+
+
+
+>>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
 ## 🌟 Features
 
 ### 📊 Technical Analysis
@@ -282,4 +305,8 @@ This project is provided as-is for educational purposes.
 
 **Built with ❤️ for traders and developers**
 
+<<<<<<< HEAD
 For questions or support, please refer to the documentation or create an issue in the repository.
+=======
+For questions or support, please refer to the documentation or create an issue in the repository.
+>>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
