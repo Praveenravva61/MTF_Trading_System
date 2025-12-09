@@ -2,17 +2,19 @@
 
 import streamlit as st
 import pandas as pd
+import numpy as np
 import asyncio
 import random
 import os
 import base64
 from pathlib import Path
 from datetime import datetime
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 
 # Import modules
 from modules.master_report import generate_master_report
 from modules.data_fetcher import get_stock_info
+from modules.forecasting import ForecastingAgent
 from utils.visualizations import (
     create_candlestick_chart,
     create_indicator_chart,
@@ -616,12 +618,17 @@ else:
             st.markdown("---")
 
             # ====================================================
-            # 2) CHARTS — DAILY + INTRADAY
+            # 1.5) AI FORECASTING AGENT
             # ====================================================
-            st.markdown("## 📊 Price Structure — Daily & Intraday")
-
-            charts_left, charts_right = st.columns([2.0, 1.8])
-
+            st.markdown("## 🔮 AI Forecasting Agent (30-Day Prediction)")
+            
+            with st.expander("✨ Run Deep Learning Forecast (XGBoost + LSTM + Linear Ensemble)", expanded=False):
+                st.info("This module trains an ensemble of models on 5+ years of data to predict the next 30 days. It may take 10-20 seconds.")
+                
+                if st.button("🚀 Run Deep Forecast", key="btn_forecast"):
+                    with st.spinner("🤖 Training models & generating forecast..."):
+                        try:
+                            agent = ForecastingAgent(ticker)
             with charts_left:
                 daily_fig = create_candlestick_chart(
                     df_daily.tail(100), f"{ticker} — Daily Candlestick", True, sr

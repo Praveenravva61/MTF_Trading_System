@@ -11,6 +11,9 @@ plotly
 
 # Machine Learning
 scikit-learn
+xgboost
+tensorflow
+shap
 
 # Google AI SDK (for news analysis)
 google-generativeai

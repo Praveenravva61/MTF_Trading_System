@@ -3,10 +3,10 @@ import pandas as pd
 import yfinance as yf
 from datetime import datetime, timedelta
 
-
 def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=None, interval='1d'):
     """
     Fetch historical stock data from Yahoo Finance and return a cleaned DataFrame.
+    Ensures 'Date' is a column, not an index.
     """
     try:
         stock = yf.Ticker(ticker)
@@ -19,9 +19,29 @@ def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=
         if df.empty:
             return pd.DataFrame()
         
-        df = df.reset_index()
+        # Ensure Date is a column
+        if isinstance(df.index, pd.DatetimeIndex):
+            df = df.reset_index()
+        
         df.columns = df.columns.str.strip()
-        df['Date'] = pd.to_datetime(df['Date'])
+        
+        # Check if Date column exists after reset
+        if 'Date' not in df.columns:
+            # Fallback: try to find a column that looks like a date
+            for col in df.columns:
+                if pd.api.types.is_datetime64_any_dtype(df[col]):
+                    df = df.rename(columns={col: 'Date'})
+                    break
+        
+        if 'Date' in df.columns:
+            df['Date'] = pd.to_datetime(df['Date'])
+            # Remove timezone info for consistency
+            if df['Date'].dt.tz is not None:
+                df['Date'] = df['Date'].dt.tz_localize(None)
+        else:
+            # If we still don't have a Date column, we can't proceed safely
+            print(f"Error: No Date column found for {ticker}")
+            return pd.DataFrame()
         
         numeric_cols = ['Open', 'High', 'Low', 'Close', 'Volume']
         for col in numeric_cols:
@@ -31,6 +51,7 @@ def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=
         if 'Adj Close' in df.columns:
             df['Adj Close'] = pd.to_numeric(df['Adj Close'], errors='coerce')
         
+        # Drop rows where all price columns are NaN
         df = df.dropna(how='all', subset=[col for col in df.columns if col != 'Date'])
         
         cols_to_drop = ['Dividends', 'Stock Splits']
@@ -44,12 +65,29 @@ def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=
                 df[col] = df[col].round(2)
         
         if 'Volume' in df.columns:
-            df['Volume'] = df['Volume'].astype('Int64')
+            df['Volume'] = df['Volume'].fillna(0).astype('Int64')
         
         return df
     
     except Exception as e:
         print(f"Error fetching data for {ticker}: {str(e)}")
+        return pd.DataFrame()
+
+
+def fetch_benchmark_data(symbol, period='5y'):
+    """
+    Fetch benchmark index data for relative strength comparison.
+    Returns a DataFrame with Date and Benchmark_Close.
+    """
+    try:
+        df = fetch_yahoo_finance_history(symbol, period=period)
+        if not df.empty and 'Date' in df.columns and 'Close' in df.columns:
+            # Rename Close to Benchmark_Close and keep only Date and that column
+            df = df[['Date', 'Close']].rename(columns={'Close': 'Benchmark_Close'})
+            return df
+        return pd.DataFrame()
+    except Exception as e:
+        print(f"Error fetching benchmark {symbol}: {e}")
         return pd.DataFrame()
 
 
