@@ -3,17 +3,17 @@ import pandas as pd
 import yfinance as yf
 from datetime import datetime, timedelta
 
-<<<<<<< HEAD
-def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=None, interval='1d'):
-    """
-    Fetch historical stock data from Yahoo Finance and return a cleaned DataFrame.
-    Ensures 'Date' is a column, not an index.
-=======
 
 def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=None, interval='1d'):
     """
     Fetch historical stock data from Yahoo Finance and return a cleaned DataFrame.
->>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
+    Ensures 'Date' is a column, not an index.
+
+
+def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=None, interval='1d'):
+    """
+    Fetch historical stock data from Yahoo Finance and return a cleaned DataFrame.
+
     """
     try:
         stock = yf.Ticker(ticker)
@@ -25,8 +25,7 @@ def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=
         
         if df.empty:
             return pd.DataFrame()
-        
-<<<<<<< HEAD
+
         # Ensure Date is a column
         if isinstance(df.index, pd.DatetimeIndex):
             df = df.reset_index()
@@ -50,11 +49,11 @@ def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=
             # If we still don't have a Date column, we can't proceed safely
             print(f"Error: No Date column found for {ticker}")
             return pd.DataFrame()
-=======
+
         df = df.reset_index()
         df.columns = df.columns.str.strip()
         df['Date'] = pd.to_datetime(df['Date'])
->>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
+
         
         numeric_cols = ['Open', 'High', 'Low', 'Close', 'Volume']
         for col in numeric_cols:
@@ -64,10 +63,9 @@ def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=
         if 'Adj Close' in df.columns:
             df['Adj Close'] = pd.to_numeric(df['Adj Close'], errors='coerce')
         
-<<<<<<< HEAD
+
         # Drop rows where all price columns are NaN
-=======
->>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
+
         df = df.dropna(how='all', subset=[col for col in df.columns if col != 'Date'])
         
         cols_to_drop = ['Dividends', 'Stock Splits']
@@ -81,11 +79,11 @@ def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=
                 df[col] = df[col].round(2)
         
         if 'Volume' in df.columns:
-<<<<<<< HEAD
+
             df['Volume'] = df['Volume'].fillna(0).astype('Int64')
-=======
+
             df['Volume'] = df['Volume'].astype('Int64')
->>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
+
         
         return df
     
@@ -94,7 +92,7 @@ def fetch_yahoo_finance_history(ticker, period='max', start_date=None, end_date=
         return pd.DataFrame()
 
 
-<<<<<<< HEAD
+
 def fetch_benchmark_data(symbol, period='5y'):
     """
     Fetch benchmark index data for relative strength comparison.
@@ -112,8 +110,6 @@ def fetch_benchmark_data(symbol, period='5y'):
         return pd.DataFrame()
 
 
-=======
->>>>>>> 65596a490f88b7354b84d34d5a52877ece134d6f
 def get_stock_info(ticker):
     """Get basic information about the stock."""
     try:
